@@ -1,5 +1,5 @@
 .lvg-manage-role-permissions__dialog {
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
