@@ -15,7 +15,7 @@
                             <tbody>
                             <tr><th class="lvg-user-dashboard__user-info__th" translate>user.dashboard.general.provider</th><td>{{::$ctrl.userProvider}}</td></tr>
                             <tr><th class="lvg-user-dashboard__user-info__th" ng-if="$ctrl.user.email != null" translate>common.label.email</th><td>{{::$ctrl.user.email}}</td></tr>
-                            <tr><th  class="lvg-user-dashboard__user-info__th" translate>user.dashboard.general.memberSince</th><td>{{::$ctrl.user.memberSince | date: 'MMM d, y'}}</td></tr>
+                            <tr><th  class="lvg-user-dashboard__user-info__th" translate>user.dashboard.general.memberSince</th><td>{{::$ctrl.user.memberSince | dateIncremental : 'LL'}}</td></tr>
                             </tbody>
                         </table>
                     </md-card-content>
