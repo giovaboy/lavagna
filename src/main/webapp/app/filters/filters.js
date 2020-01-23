@@ -112,28 +112,32 @@
     });
 
     filters.filter('dateIncremental', function ($filter, $cacheFactory) {
-        return decorateCache(function (v) {
+        return decorateCache(function (v, format) {
             if (v === undefined || v === null) {
                 return '';
+            }
+
+            if (typeof format !== 'undefined' || format) {
+                 return moment(v).format(format);
             }
 
             var date = new Date();
             var year = date.getFullYear();
             var dateYear = v.substring(0, 4);
 
-            if (year === dateYear) {
+            if (year == dateYear) {
                 var day = date.getDate();
                 var month = date.getMonth() + 1;
                 var dateDay = $filter('date')(v, 'd');
                 var dateMonth = $filter('date')(v, 'M');
 
-                if (day === dateDay && month === dateMonth) {
-                    return $filter('date')(v, 'h:mm a');
+                if (day == dateDay && month == dateMonth) {
+                    return moment(v).calendar();//.format('LT');
                 } else {
-                    return $filter('date')(v, 'MMM d h:mm a');
+                    return moment(v).format('lll');//.format('MMM D hh:mm a');
                 }
             } else {
-                return $filter('date')(v, 'MMM d, y h:mm a');
+                return moment(v).format('lll');
             }
         }, 1000, 'dateIncremental', $cacheFactory);
     });

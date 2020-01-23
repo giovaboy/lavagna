@@ -273,7 +273,7 @@ public class ResourceController {
                 "/js/sockjs.min.js", "/js/stomp.min.js",//
                 //
                 "/js/search-parser.js",//
-                "/js/moment.min.js",//
+                "/js/moment-with-locales.min.js",//
                 "/js/Chart.min.js")) {
                 output(res, context, allJs, ba);
             }
