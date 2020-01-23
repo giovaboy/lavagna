@@ -40,7 +40,7 @@
                             <i data-translate>common.not-set</i>
                         </span>
                         <span data-ng-if="$ctrl.dueDate">
-                            <span>{{$ctrl.dueDate.valueTimestamp | date: 'MMM d, y'}}</span>
+                            <span>{{$ctrl.dueDate.valueTimestamp | dateIncremental }}</span>
                         </span>
                     </div>
                     <div class="flex no-grow">
