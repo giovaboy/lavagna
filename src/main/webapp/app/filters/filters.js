@@ -113,32 +113,25 @@
 
     filters.filter('dateIncremental', function ($filter, $cacheFactory) {
         return decorateCache(function (v, format) {
-            if (v === undefined || v === null) {
+            if (typeof v === 'undefined' || v === null) {
                 return '';
             }
-
             if (typeof format !== 'undefined' || format) {
                  return moment(v).format(format);
             }
 
             var date = new Date();
-            var year = date.getFullYear();
-            var dateYear = v.substring(0, 4);
 
-            if (year == dateYear) {
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var dateDay = $filter('date')(v, 'd');
-                var dateMonth = $filter('date')(v, 'M');
+            var a = moment(date);
+            var b = moment(v);
+            var diffDays = a.diff(b, 'days');
 
-                if (day == dateDay && month == dateMonth) {
-                    return moment(v).calendar();//.format('LT');
-                } else {
-                    return moment(v).format('lll');//.format('MMM D hh:mm a');
-                }
+            if (diffDays < 7 && diffDays > -1){
+                return moment(v).calendar();
             } else {
                 return moment(v).format('lll');
             }
+
         }, 1000, 'dateIncremental', $cacheFactory);
     });
 
