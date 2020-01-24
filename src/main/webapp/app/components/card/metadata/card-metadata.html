@@ -36,7 +36,7 @@
                 </div>
                 <div class="lvg-card-metadata__item-text row row-inherit start-xs middle-xs">
                     <span>
-                        <span>{{::$ctrl.card.createTime | date: 'medium' }}</span>
+                        <span>{{::$ctrl.card.createTime | dateIncremental }}</span>
                         <span data-translate>common.by</span>
                         <lvg-user-link user-id="$ctrl.card.userId"></lvg-user-link>
                     </span>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="lvg-card-metadata__item-text row row-inherit start-xs middle-xs">
                     <span>
-                        <span>{{::$ctrl.card.lastUpdateTime | date: 'medium' }}</span>
+                        <span>{{::$ctrl.card.lastUpdateTime | dateIncremental }}</span>
                         <span data-translate>common.by</span>
                         <lvg-user-link user-id="$ctrl.card.userId"></lvg-user-link>
                     </span>
@@ -66,7 +66,7 @@
                             <i data-translate>common.not-set</i>
                         </span>
                         <span data-ng-if="$ctrl.dueDates[0]">
-                            <span>{{$ctrl.dueDates[0].value.valueTimestamp | date: 'MMM d, y'}}</span>
+                            <span>{{$ctrl.dueDates[0].value.valueTimestamp | dateIncremental : 'LL'}}</span>
                         </span>
                     </div>
                     <div class="flex no-grow" data-lvg-has-permission="UPDATE_CARD">
